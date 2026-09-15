@@ -1,0 +1,298 @@
+@import './tokens.css';
+
+/* Modern Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  min-height: 100%;
+  width: 100%;
+  background-color: var(--color-paper-50);
+  color: var(--color-ink-900);
+  font-family: var(--font-ui);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Restrained Parchment Grain Texture (Almost invisible at standard viewing distance) */
+body {
+  background-color: var(--color-paper-50);
+  background-image: 
+    radial-gradient(ellipse at 50% 10%, rgba(255, 255, 255, 0.45) 0%, rgba(239, 228, 204, 0.25) 100%),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.028'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-attachment: fixed;
+}
+
+/* Headings & Display Typography */
+h1, h2, h3, h4, .font-display {
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--color-ink-900);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+p {
+  color: var(--color-ink-700);
+  font-size: var(--text-body);
+  max-width: 68ch;
+}
+
+/* Spec Page 4: Journey Label */
+.journey-label {
+  font-family: var(--font-ui);
+  font-size: var(--text-journey-label);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-ink-500);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.journey-label::before {
+  content: "";
+  display: inline-block;
+  width: 14px;
+  height: 1.5px;
+  background-color: var(--color-terracotta);
+}
+
+/* Focus Visible for Accessibility */
+:focus-visible {
+  outline: 2px solid var(--color-terracotta);
+  outline-offset: 3px;
+}
+
+/* Modern Button Treatments (Spec Page 9) - Never skeuomorphic, no faux leather */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  font-family: var(--font-ui);
+  font-size: var(--text-button);
+  font-weight: 500;
+  line-height: 1.2;
+  cursor: pointer;
+  transition: all var(--duration-nav) var(--ease-journal);
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  border: none;
+  background: transparent;
+  user-select: none;
+}
+
+/* Primary Button: Solid terracotta fill, white label */
+.btn-primary {
+  background-color: var(--color-terracotta);
+  color: #FFFFFF;
+  padding: 0.75rem 1.4rem;
+  border: 1px solid var(--color-terracotta);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-terracotta-hover);
+  border-color: var(--color-terracotta-hover);
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+/* Secondary Button: Text button, no fill or border */
+.btn-secondary {
+  color: var(--color-ink-900);
+  padding: 0.6rem 0.8rem;
+  font-weight: 500;
+}
+
+.btn-secondary:hover {
+  color: var(--color-terracotta);
+}
+
+/* Respect Action: Forest / neutral treatment */
+.btn-respect {
+  background-color: var(--color-forest-soft);
+  color: var(--color-forest);
+  border: 1px solid rgba(64, 88, 68, 0.35);
+  padding: 0.7rem 1.25rem;
+  font-weight: 600;
+}
+
+.btn-respect:hover {
+  background-color: var(--color-forest);
+  color: #FFFFFF;
+  border-color: var(--color-forest);
+}
+
+/* Seals and Badges (Spec Page 8) */
+.seal-verified {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-forest);
+  background-color: var(--color-forest-soft);
+  border: 1px solid rgba(64, 88, 68, 0.3);
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-sm);
+}
+
+.badge-permission {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--color-ink-700);
+  background-color: var(--color-paper-100);
+  border: 1px solid var(--color-paper-200);
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-sm);
+}
+
+.badge-permission.restricted {
+  color: var(--color-ink-900);
+  border-color: rgba(64, 88, 68, 0.4);
+  background-color: var(--color-forest-soft);
+}
+
+/* Card / Parchment Panel Foundation */
+.parchment-panel {
+  background-color: var(--color-paper-100);
+  border: 1px solid var(--color-paper-200);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-parchment);
+}
+
+/* Motion Levels (Spec Page 6) */
+.transition-level-1 {
+  animation: level1Nav var(--duration-nav) var(--ease-journal) forwards;
+}
+
+@keyframes level1Nav {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.transition-level-2-expand {
+  animation: level2Expand var(--duration-panel) var(--ease-journal) forwards;
+  transform-origin: center center;
+}
+
+@keyframes level2Expand {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.transition-level-3-unfold {
+  animation: level3Unfold var(--duration-chapter) var(--ease-journal) forwards;
+  transform-origin: top center;
+}
+
+@keyframes level3Unfold {
+  0% {
+    opacity: 0;
+    transform: perspective(1000px) rotateX(-12deg) translateY(15px);
+  }
+  100% {
+    opacity: 1;
+    transform: perspective(1000px) rotateX(0deg) translateY(0);
+  }
+}
+
+.transition-level-3-pageturn {
+  animation: level3PageTurn var(--duration-chapter) var(--ease-page-turn) forwards;
+  transform-origin: left center;
+}
+
+@keyframes level3PageTurn {
+  0% {
+    opacity: 0;
+    transform: perspective(1200px) rotateY(-18deg) translateX(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: perspective(1200px) rotateY(0deg) translateX(0);
+  }
+}
+
+.transition-level-3-stamp {
+  animation: level3StampReveal var(--duration-chapter) cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes level3StampReveal {
+  0% {
+    opacity: 0;
+    transform: scale(1.6) rotate(-8deg);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(0.96) rotate(1deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+/* Reduced Motion Fallback: Spec Page 6 & 10 */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .transition-level-1,
+  .transition-level-2-expand,
+  .transition-level-3-unfold,
+  .transition-level-3-pageturn,
+  .transition-level-3-stamp {
+    animation: simpleFade 200ms ease-in-out forwards !important;
+    transform: none !important;
+  }
+
+  @keyframes simpleFade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+}
+
+/* Layout Utilities */
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}

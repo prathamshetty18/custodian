@@ -1,0 +1,63 @@
+/**
+ * CUSTODIAN Design Tokens
+ * Conforming strictly to Product Spec v1.0
+ * 80% neutral parchment + ink, 15% supporting colours, 5% accent
+ */
+
+:root {
+  /* Paper Palette (80% Surface Foundation) */
+  --color-paper-50: #F7F1E3;   /* Main page background */
+  --color-paper-100: #EFE4CC;  /* Cards / parchment panels */
+  --color-paper-200: #DFCFAD;  /* Borders / dividers */
+  --color-paper-300: #CFBC94;  /* Deepened border / shadow accent */
+
+  /* Ink Palette (Text Hierarchy - WCAG AA compliant) */
+  --color-ink-900: #29251F;    /* Primary text (high contrast dark ink) */
+  --color-ink-700: #51483B;    /* Secondary text */
+  --color-ink-500: #766A59;    /* Metadata & subtle annotations */
+  --color-ink-300: #9F927E;    /* Inactive / subtle guidelines */
+
+  /* Primary Accent (5%) */
+  --color-terracotta: #9A4F32;       /* Primary action buttons, seal highlights */
+  --color-terracotta-hover: #813F27; /* Interactive hover */
+  --color-terracotta-soft: rgba(154, 79, 50, 0.12);
+
+  /* Supporting Colours (15%) */
+  --color-forest: #405844;          /* Verified / respectful states */
+  --color-forest-soft: #E3EDE4;     /* Custodian boundary soft background */
+  --color-ochre: #B4873B;           /* Highlights / warm seals */
+  --color-ochre-soft: #F6EEDD;
+  --color-danger: #8A3F35;          /* Errors / warnings */
+  --color-danger-soft: #F9ECEB;
+
+  /* Typography */
+  --font-display: 'Cormorant Garamond', Garamond, Georgia, serif;
+  --font-ui: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Type Scale */
+  --text-journey-label: 0.75rem;     /* 12px / uppercase, tracked */
+  --text-metadata: 0.84375rem;       /* 13.5px */
+  --text-button: 0.9375rem;          /* 15px */
+  --text-body: 1.0625rem;            /* 17px (spec: 16-18px, min 16px) */
+  --text-story-title: 2.125rem;      /* 34px (spec: 32-40px) */
+  --text-location: 3.5rem;           /* 56px (spec: 48-64px) */
+
+  /* Radii - Modern, subtle, disciplined (avoid rounded toy appearance) */
+  --radius-sm: 3px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+  --radius-full: 9999px;
+
+  /* Shadows - Whispering paper depth, never heavy 3D skeuomorphism */
+  --shadow-parchment: 0 1px 3px rgba(41, 37, 31, 0.05), 0 6px 16px rgba(41, 37, 31, 0.04);
+  --shadow-panel: 0 4px 20px rgba(41, 37, 31, 0.08), 0 1px 2px rgba(41, 37, 31, 0.04);
+  --shadow-active: 0 8px 30px rgba(41, 37, 31, 0.12), 0 2px 4px rgba(41, 37, 31, 0.06);
+
+  /* Motion Primitives (Spec Page 6) */
+  --duration-nav: 300ms;             /* Level 1: Normal navigation (250-350ms) */
+  --duration-panel: 400ms;           /* Level 2: Entering a story (350-450ms) */
+  --duration-chapter: 600ms;         /* Level 3: Major chapter transitions (500-700ms) */
+
+  --ease-journal: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-page-turn: cubic-bezier(0.4, 0, 0.2, 1);
+}
